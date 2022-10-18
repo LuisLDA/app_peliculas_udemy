@@ -13,6 +13,7 @@ class Peliculas {
 }
 
 class Pelicula {
+  String? uniqueId;
   bool adult;
   String backdropPath;
   List<int> genreIds;
@@ -29,6 +30,7 @@ class Pelicula {
   int voteCount;
 
   Pelicula({
+    this.uniqueId,
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
@@ -45,37 +47,33 @@ class Pelicula {
     required this.voteCount,
   });
 
-  Pelicula.fromJsonMap(Map<String, dynamic> json):
-    voteCount = json['vote_count'],
-    id = json['id'],
-    video = json['video'],
-    voteAverage = json['vote_average'] / 1,
-    title = json['title'],
-    popularity = json['popularity'] / 1,
-    posterPath = json['poster_path'],
-    originalLanguage = json['original_language'],
-    originalTitle = json['original_title'],
-    genreIds = json['genre_ids'].cast<int>(),
-    backdropPath = json['backdrop_path'],
-    adult = json['adult'],
-    overview = json['overview'],
-    releaseDate = json['release_date'];
+  Pelicula.fromJsonMap(Map<String, dynamic> json)
+      : voteCount = json['vote_count'],
+        id = json['id'],
+        video = json['video'],
+        voteAverage = json['vote_average'] / 1,
+        title = json['title'],
+        popularity = json['popularity'] / 1,
+        posterPath = json['poster_path'],
+        originalLanguage = json['original_language'],
+        originalTitle = json['original_title'],
+        genreIds = json['genre_ids'].cast<int>(),
+        backdropPath = json['backdrop_path'],
+        adult = json['adult'],
+        overview = json['overview'],
+        releaseDate = json['release_date'];
 
-
-
-  getPosterImg(){
-    if (posterPath==null){
+  getPosterImg() {
+    if (posterPath == null) {
       return 'https://i.stack.imgur.com/mwFzF.png';
     }
     return 'https://image.tmdb.org/t/p/w500/$posterPath';
   }
 
-  getBackgroundImg(){
-    if (backdropPath==null){
+  getBackgroundImg() {
+    if (backdropPath == null) {
       return 'https://i.stack.imgur.com/mwFzF.png';
     }
     return 'https://image.tmdb.org/t/p/w500/$backdropPath';
   }
-
-
 }

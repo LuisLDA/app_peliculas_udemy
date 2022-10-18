@@ -1,5 +1,6 @@
 import 'package:app_peliculas_udemy/src/models/pelicula_model.dart';
 import 'package:app_peliculas_udemy/src/providers/peliculas_provider.dart';
+import 'package:app_peliculas_udemy/src/search/search_delegate.dart';
 import 'package:app_peliculas_udemy/src/widgets/card_swiper_widget.dart';
 import 'package:app_peliculas_udemy/src/widgets/movie_horizontal.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,9 @@ class HomePage extends StatelessWidget {
           centerTitle: false,
           title: Text('Peliculas en cines'),
           backgroundColor: Colors.amberAccent,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+          actions: [IconButton(onPressed: () {
+            showSearch(context: context, delegate: DataSearch());
+          }, icon: Icon(Icons.search))],
         ),
         body: Container(
           child: Column(
